@@ -4,7 +4,7 @@ const Logo = () => {
     return (
         <div className="my-1 text-center">
             <Link to={"/"}>
-                <img src="/images/logo-vcp.avif" alt="VCP" />
+                <img src="/images/logo-vcp.avif" alt="VCP" width={160} />
             </Link>
         </div>
     )

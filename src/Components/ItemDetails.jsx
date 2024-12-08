@@ -1,8 +1,8 @@
 import { useRef, useState } from "react"
 
 const ItemDetails = ({item}) => {
-    const [colorSelected, SetColorSelected] = useState("");
-    const [sizeSelected, SetSizeSelected] = useState("");
+    const [colorSelected, setColorSelected] = useState("");
+    const [sizeSelected, setSizeSelected] = useState("");
     const colores = useRef();
     const talles = useRef();
 
@@ -11,7 +11,7 @@ const ItemDetails = ({item}) => {
             element.classList.remove("active");
         }
         
-        SetColorSelected(e.target.innerHTML);
+        setColorSelected(e.target.innerHTML);
         e.target.classList.add("active");
     }
 
@@ -20,7 +20,7 @@ const ItemDetails = ({item}) => {
             element.classList.remove("active");
         }
 
-        SetSizeSelected(e.target.innerHTML);
+        setSizeSelected(e.target.innerHTML);
         e.target.classList.add("active");
     }    
 
