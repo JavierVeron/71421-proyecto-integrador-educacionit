@@ -1,18 +1,36 @@
+import { useContext, useEffect, useState } from "react";
+import { useSelector } from "react-redux"
+import { ProductContext } from "../data/context/ProductContext";
+import CartItem from "./CartItem";
+
+
 const CartList = () => {
+    const {products} = useContext(ProductContext);
+    const items = useSelector(state => state);
+    const [listItems, setListItems] = useState([]);
+
+    useEffect(() => {
+        items && setListItems(items.cart.map(item => {
+            let product = products.find(product => product.id == item.productId);
+            return {id:item.productId, title:product.title, size:item.size, color:item.color, price:product.price, count:item.count}
+        }));
+    }, [items])
+
+    if (listItems.length == 0) {
+        return (
+            <div className="my-5 text-center">
+                <h3>Error! No se encontraron Productos en el Carrito!</h3>
+            </div>
+        )
+    }
+    
     return (
         <div className="my-3 text-center">
-            <div className="card">
-                <div className="card-body">
-                    <h5 className="card-title">Remera Over Carl Militar</h5>
-                    <h6 className="card-subtitle mb-2 text-body-secondary">Talle: S | Color: Blanco</h6>
-                    <p>$32990</p>
-                    <div className="btn-group" role="group">
-                        <button type="button" className="btn btn-light">-</button>
-                        <button type="button" className="btn btn-light">1</button>
-                        <button type="button" className="btn btn-light">+</button>
-                    </div>
-                </div>
-            </div>
+            {
+                listItems.map(item => (
+                    <CartItem key={item.id+item.size+item.color} item={item} />
+                ))
+            }
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import { useRef, useState } from "react"
+import AddToCartButton from "../Botones/AddToCartButton";
 
 const ItemDetails = ({item}) => {
     const [colorSelected, setColorSelected] = useState("");
@@ -12,7 +13,7 @@ const ItemDetails = ({item}) => {
         }
         
         setColorSelected(e.target.innerHTML);
-        e.target.classList.add("active");
+        e.target.classList.add("active");        
     }
 
     const SelectSize = (e) => {
@@ -46,6 +47,7 @@ const ItemDetails = ({item}) => {
                 }
             </div>
             <p>Precio: <b>${item.price}</b></p>
+            <AddToCartButton productId={item.id} size={sizeSelected} color={colorSelected} />
         </>
     )
 }

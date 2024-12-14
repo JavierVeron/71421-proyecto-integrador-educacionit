@@ -1,11 +1,19 @@
-import { Link } from "react-router-dom"
+import { useDispatch } from "react-redux";
+import { agregarItem } from "../redux/cart/actions_type";
 
-const AddToCartButton = () => {
+const AddToCartButton = ({productId, size, color}) => {
+    const dispatch = useDispatch();
+    
+    const addToCart = () => {
+        const item = {productId:productId, size:size, color:color};
+        dispatch(agregarItem(item))
+    }
+
     return (
         <div className="my-3 text-center">
-            <Link to={"/"} className="btn btn-light">
+            <button to={"/"} className="btn btn-light" onClick={addToCart}>
                 Agregar al Carrito
-            </Link>
+            </button>
         </div>
     )
 }

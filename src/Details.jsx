@@ -1,4 +1,3 @@
-import AddToCartButton from "./Botones/AddToCartButton"
 import BackButton from "./Botones/BackButton"
 import ItemDetails from "./Components/ItemDetails"
 import productos from "./assets/json/productos.json";
@@ -12,7 +11,6 @@ const Details = () => {
         <div className="my-5 text-center">
             <BackButton />
             <ItemDetails item={producto} />
-            <AddToCartButton />
         </div>
     )
 }
